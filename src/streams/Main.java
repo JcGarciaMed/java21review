@@ -4,6 +4,7 @@ package streams;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 record Car(String type, String make, String model, Integer engineCapacity, List<String> devices) {
@@ -60,5 +61,11 @@ public class Main {
                 .collect(Collectors.groupingBy(Car::type, Collectors.summingInt(Car::engineCapacity)));
 
         System.out.println(combinedEngineCapacityPerCar);
+
+        List<Integer> numeros = IntStream.rangeClosed(1, 100000)
+                .boxed()
+                .collect(Collectors.toList());
+
+        numeros.stream().forEach(System.out::println);
     }
 }
